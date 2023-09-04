@@ -2,11 +2,8 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Bien;
 use App\Entity\Departement;
-use App\Form\BienType;
 use App\Form\DepartementType;
-use App\Repository\BienRepository;
 use App\Repository\DepartementRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

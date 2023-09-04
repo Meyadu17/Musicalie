@@ -2,16 +2,8 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Artiste;
-use App\Entity\Bien;
-use App\Entity\Departement;
 use App\Entity\Festival;
-use App\Form\BienType;
-use App\Form\DepartementType;
 use App\Form\FestivalType;
-use App\Repository\ArtisteRepository;
-use App\Repository\BienRepository;
-use App\Repository\DepartementRepository;
 use App\Repository\FestivalRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
