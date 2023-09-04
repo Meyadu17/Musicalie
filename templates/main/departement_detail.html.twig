@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Département {{ departement.nom }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('main') }}
+{% endblock %}
+
+
+{% block body %}
+    <h1 class="home-title"> {{ departement.nom }} - {{ departement.code }}</h1>
+    {% if departement.festivals is empty %}
+        <p>Il n'y a pas encore de festival dans ce département.</p>
+
+    {% else %}
+    <div class="container">
+        <div class="row">
+            {% for festival in departement.festivals %}
+                <div class="col-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ festival.affiche }}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ festival.nom }}</h5>
+                            <p class="card-text">{{ festival.lieu }} ({{ festival.departement.code }})</p>
+                            <p>Du {{ festival.dateDebut | date('d/m/Y') }} au  {{ festival.dateFin | date('d/m/Y') }}.</p>
+                            <a href="{{ path('app_festival_voir', {'nom': festival.nom}) }}" class="btn btn-primary">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% endif %}
+
+
+{% endblock %}

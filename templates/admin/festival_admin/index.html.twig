@@ -1,0 +1,51 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}Festivals{% endblock %}
+
+{% block contenu %}
+    <section class="admin_body_container">
+        <a class="btn btn-info" href="{{ path('app_admin_festival_ajouter') }}">Nouveau festival</a>
+    </section>
+    <br>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Lieu</th>
+            <th scope="col">Département</th>
+            <th scope="col">Date début</th>
+            <th scope="col">Date fin</th>
+            <th scope="col">Date de création</th>
+            <th scope="col">Artistes</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody >
+        {% for festival in festivals %}
+            <tr>
+                <th>
+                    <img src="{{ festival.affiche }}" style="height: 20px">
+                    {{festival.nom}}
+                </th>
+                <td>{{festival.lieu}}</td><!-- Penser a formater la date !!!!!-->
+                <td>{{festival.departement.nom}} ({{festival.departement.code}})</td><!-- Penser a formater la date !!!!!-->
+                <td>{{festival.dateDebut | date('d/m/y') }}</td>
+                <td>{{festival.dateFin | date('d/m/y')}}</td>
+                <td>{{festival.dateCreation | date('d/m/y')}}</td>
+                <td> {{ festival.artistes | length }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('app_admin_festival_modifier', {'id': festival.id}) }}">Modifier</a>
+                    <a class="btn btn-danger" onclick="return confirm('Êtes-vous sûr ?')" href="{{ path('app_admin_festival_supprimer', {'id': festival.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

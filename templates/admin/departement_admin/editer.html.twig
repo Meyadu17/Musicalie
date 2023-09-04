@@ -1,0 +1,29 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}Editer département{% endblock %}
+
+{% block contenu %}
+<section class="admin_body_container">
+    
+    <!-- { { form_widget(form) } }  pour afficher la totalité d'un formulaire-->
+    <div class="contenaire">
+        
+        <h1 class="mb-4">{{ app.request.get('_route') == "app_admin_departement_ajouter" ? 'Ajouter' : 'Modifier' }} un département</h1>
+        
+        {{ form_start(form) }}
+            <div class="clo-4">
+                {{ form_row(form.nom) }}
+            </div>
+
+            <div class="clo-4">
+                {{ form_row(form.code) }}
+            </div>
+
+            <button class="btn btn-success" type="submit">Valider</button>
+        
+        {{ form_end(form) }}
+        <!-- { % do form.prix.setRendered % }, et pense à mettre le dans le form requirer false pour les champs cachés -->
+    </div>
+    
+</section>
+{% endblock %}

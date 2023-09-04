@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Festival {{ festival.nom }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('main') }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="card mb-3" style="max-width: 1080px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ festival.affiche }}" class="img-fluid rounded-start">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h1 class="card-title">{{ festival.nom }}</h1>
+                        <p class="card-text">{{ festival.lieu }} ({{ festival.departement.code }})</p>
+                        <p>Du {{ festival.dateDebut | date('d/m/Y') }} au  {{ festival.dateFin | date('d/m/Y') }}.</p>
+                    </div>
+
+                    <div class="card-body">
+                        <h3 class="card-title">Programmation :</h3>
+                        <ul class="liste-artiste">
+                            {%  for artiste in festival.artistes %}
+                                <li>{{ artiste.nomScene }} ({{ artiste.style }})</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}Départements{% endblock %}
+
+{% block contenu %}
+    <section class="admin_body_container">
+        <a class="btn btn-info" href="{{ path('app_admin_departement_ajouter') }}">Nouveau département</a>
+    </section>
+    <br>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">code</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody >
+        {% for departement in departements %}
+            <tr>
+                <th>{{departement.nom}}</th>
+                <td>{{departement.code}}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('app_admin_departement_modifier', {'id': departement.id}) }}">Modifier</a>
+                    <a class="btn btn-danger" onclick="return confirm('Êtes-vous sûr ?')" href="{{ path('app_admin_departement_supprimer', {'id': departement.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

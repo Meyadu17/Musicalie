@@ -1,0 +1,71 @@
+@import "~bootstrap/scss/bootstrap";
+
+th, td {
+    text-align: center;
+}
+
+.un-bien{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 5%;
+    gap: 50px;
+}
+
+body {
+    background-color: rgb(243, 243, 243);
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+
+    .card {
+        margin-bottom: 80px;
+    }
+
+    .card-img-top {
+        height: 300px;
+        background-repeat: round;
+    }
+
+    .liste-artiste {
+        max-height: 255px;
+        overflow-y: scroll;
+    }
+}
+
+.home-title {
+    text-align: center;
+    margin: 50px 0;
+    color: #0066ff;
+}
+
+.table-departement {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 150px;
+
+    a {
+        text-decoration: none;
+        color: black;
+        border: 1px solid black;
+        border-radius: 6px;
+        padding: 5px 10px;
+
+        &:hover {
+            border-color: #0066ff;
+            color: #0066ff;
+        }
+    }
+
+    td, th {
+        height: 45px;
+        border: none;
+        background: none;
+    }
+}

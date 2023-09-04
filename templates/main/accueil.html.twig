@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('main') }}
+{% endblock %}
+
+
+{% block body %}
+    <h1  class="home-title">Derniers festivals</h1>
+    <div class="container">
+        <div class="row">
+            {% for festival in festivals %}
+                <div class="col-4">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-img-top" style="background-image: url('{{ festival.affiche }}') !important;"></div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ festival.nom }}</h5>
+                            <p class="card-text">{{ festival.lieu }} ({{ festival.departement.code }})</p>
+                            <p>Du {{ festival.dateDebut | date('d/m/Y') }} au  {{ festival.dateFin | date('d/m/Y') }}.</p>
+                            <a href="{{ path('app_festival_voir', {'nom': festival.nom}) }}" class="btn btn-primary">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <table class="table-departement">
+
+        <h1 class="home-title">Vos festivals par département</h1>
+        <tbody >
+        {% for departement in departements %}
+            <tr>
+                <td>
+                    <a href="{{ path('app_departement_voir', {'code': departement.code}) }}">
+                        {{departement.code }} - {{departement.nom }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
